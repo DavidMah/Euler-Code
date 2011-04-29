@@ -1,0 +1,8 @@
+def calculate(n)
+	c = n ** 2 - n
+	mid = Math.sqrt(1 + 2 * c)
+	result = (1 + mid) / 2
+	return result if result % 1 == 0
+	return result if result % 1 == 0
+	return false
+end
