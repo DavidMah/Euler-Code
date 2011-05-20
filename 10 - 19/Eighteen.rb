@@ -1,7 +1,7 @@
 def calculate(list, i, j)
 	puts i.to_s + " " + j.to_s
 	return $chart[[i, j]] if $chart[[i, j]] != nil
-	list[i][j] + [calculate(list, i + 1, j), calculate(list, i + 1, j + 1)].max
+	return list[i][j] + [calculate(list, i + 1, j), calculate(list, i + 1, j + 1)].max
 end
 list = "75
 95 64
