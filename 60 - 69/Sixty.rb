@@ -1,38 +1,53 @@
-def remarkable(primetable, a, b)
-	a = a.to_s
-	b = b.to_s
-	return false if primetable[Integer(a + b)] == false
-	return false if primetable[Integer(b + a)] == false
-	return true
+def work(p, primes, table)
+	result = []
+	stringp = p.to_s
+	for pri in primes
+		next if p == pri
+		stringpri = pri.to_s
+		result << pri if (table[Integer(stringp + stringpri)] and table[Integer(stringpri + stringp)])
+	end
+	return result
 end
-primes = Array.new(100000){0}
-primetable = Hash.new{false}
+def wipe(index, table) 
+	index[1].reject!{|x| not table[x]}
+end
+def clean(table)
+	table.reject!{|p, pri| pri.size < (ARGV.size == 2 ? Integer(ARGV[1]) : 3)}
+	return table
+end
+CAP = ARGV.size == 0 ? 1000000 : Integer(ARGV[0])
+primes = Array.new(CAP){false}
 for i in 2...primes.size
 	next if primes[i] == nil
-	puts i
 	primes[i] = i
-	primetable[i] = []
 	j = i * 2
 	while j < primes.size
 		primes[j] = nil
 		j += i
 	end
 end
-primes[0] = nil
-primes[1] = nil
-primes.compact!
+primes[0] = nil or primes[1] = nil or primes.compact!
 
-for i in 0...primes.size
-	puts primes[i]
-	for j in (i + 1)...primes.size
-		if remarkable(primetable, primes[i], primes[j])
-			primetable[primes[i]] << primes[j]
-			primetable[primes[j]] << primes[i]
-		end
-	end
+puts "primes calculated"
+
+table = Hash.new{false}
+for p in primes
+	table[p] = true
 end
-primetable.reject!{|key, value| value.size < 4}
-primetable = primetable.to_a.map{|kv| [kv[0], kv[1].reject!{|p| primetable[p] == false}]}
-for p in primetable
-	puts p.to_s
+for p in primes
+	table[p] = work(p, primes, table)
+end
+puts "primes worked"
+winners = clean(table)
+puts winners.to_s 
+puts ""
+for i in 1..15
+	for w in winners
+		wipe(w, winners)
+	end
+	clean(winners)
+end
+puts "primes cleaned"
+for w in winners
+	puts w.to_s
 end
