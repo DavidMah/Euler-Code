@@ -1,3 +1,21 @@
 These are my solutions to Project Euler Problems.
-Few of them are commented in anyway, but I'll be
-updating that as code reading practice
+
+Few of them are commented in anyway, but I'll be updating that as code reading practice maybe.
+
+Used this to learn ruby, and I do a lot weird because i never read any books on it. I use some parts of ruby very nicely, 
+but at the same time use crap like for loops.
+
+Also, the O time isn't the best for all of them. Some problems need to be left for 5-10 minutes for the solution
+
+# List of problems where the code actually gets the right solution
+1..50
+
+52, 53, 55, 56, 62, 63, 67,
+69..74
+76, 79, 81, 86, 87, 89, 92, 97, 98, 99,
+
+102, 114,
+
+164, 191,
+
+205, 297
