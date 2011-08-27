@@ -1,9 +1,14 @@
+#Problem 102: For how many triangles in the text file does the interior contain the origin?
+#Using OneHundredTwo.txt, a 27K text file containing the co-ordinates of one thousand "random" triangles,
+#find the number of triangles for which the interior contains the origin.
+
 BOTTOM = 0
 MID = 1
 TOP = 2
 X_COORDINATE = 0
 Y_COORDINATE = 1
 ORIGIN = [0, 0]
+
 #Returns true if passed in triangle input contains the origin
 #Input is in the form of a string of 6 comma separated integers
 def containsOrigin(f)
