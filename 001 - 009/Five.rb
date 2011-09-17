@@ -9,8 +9,6 @@ problem = false
 result = -1
 current = 45000000 
 while not problem
-	
 	result = current and problem = true if divis(current)
-	puts current
 	current = current + 20
 end
