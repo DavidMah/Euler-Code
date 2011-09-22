@@ -19,10 +19,8 @@ end
 def test_problem(problem_index)
   problem_name = PROBLEMS[problem_index].first
   answer       = PROBLEMS[problem_index].last
-  puts "more"
   it "should get #{answer} for problem #{problem_name}" do
-    try_problem(determine_directory(problem_index), "#{problem_name}.rb").should == answer.to_s
-  end
+    try_problem(determine_directory(problem_index), "#{problem_name}.rb").should == answer.to_s end
 end
 
 
