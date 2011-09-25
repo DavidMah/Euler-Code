@@ -17,10 +17,15 @@ def try_problem(directory, problem)
 end
 
 def test_problem(problem_index)
-  problem_name = PROBLEMS[problem_index].first
-  answer       = PROBLEMS[problem_index].last
-  it "should get #{answer} for problem #{problem_name}" do
-    try_problem(determine_directory(problem_index), "#{problem_name}.rb").should == answer.to_s end
+  if PROBLEMS[problem_index].size < 2
+    it "should get a test written sometime for problem #{problem_index}"
+  else
+    problem_name = PROBLEMS[problem_index].first
+    answer       = PROBLEMS[problem_index].last
+    it "should get #{answer} for problem #{problem_name}" do
+      try_problem(determine_directory(problem_index), "#{problem_name}.rb").should == answer.to_s
+    end
+  end
 end
 
 

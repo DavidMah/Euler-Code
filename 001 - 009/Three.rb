@@ -1,4 +1,5 @@
 # Three.rb
+#
 # The prime factors of 13195 are 5, 7, 13 and 29.
 #
 # What is the largest prime factor of the TARGET 600851475143 ?
@@ -14,8 +15,6 @@
 # Then find out which of the factors are prime
 #   Find this through O(n) operation that tries all integers < n
 # And choose the largest of them
-# O(n^2)
-#
 # O(n^2)
 
 TARGET = 600851475143
