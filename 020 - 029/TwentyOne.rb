@@ -1,34 +1,33 @@
-def d(n)
-	sum = 0
-	for i in 1..(n / 2 + 1)
-		sum += i if n / i * i == n
-	end
-	sum
+# TwentyOne.rb
+#
+# Let d(n) be defined as the sum of proper divisors of n (numbers less than n which divide evenly into n).
+# If d(a) = b and d(b) = a, where a =/= b, then a and b are an amicable pair and each of a and b are called amicable numbers.
+#
+# For example, the proper divisors of 220 are 1, 2, 4, 5, 10, 11, 20, 22, 44, 55 and 110; therefore d(220) = 284.
+# The proper divisors of 284 are 1, 2, 4, 71 and 142; so d(284) = 220.
+#
+# Evaluate the sum of all the amicable numbers under 10000.
+#
+# Process:
+# Keep all integers that are amicable
+#   Find amicability of int n by finding sum of divisors of n
+#   then find sum of divisors of that result
+#     Find sum of divisors with O(n) operation modularity tests
+# Add them together
+#
+# O(n^2)
+
+BOUND = 10000
+def is_amicable?(n)
+  n_sum_divisors = sum_divisors(n)
+  n != n_sum_divisors and n == sum_divisors(n_sum_divisors)
 end
-def amicable(a, b)
-	if $results[a] == b and $results[b] == a
-		$qualified[a] = true
-		$qualified[b] = true
-		puts a.to_s + " " + b.to_s
-		return 0 if a == b
-		return a + b
-	end
-	0
+
+def sum_divisors(n)
+  divisor_sum = 0
+  (1...n).each do |t|
+    divisor_sum += t if n % t == 0
+  end
+  divisor_sum
 end
-$results = Hash.new
-$qualified = Hash.new
-for i in 1..9999
-	puts i if i % 1000 == 0
-	$results[i] = d(i)
-end
-sum = 0
-for i in 1..9999
-	puts i if i % 1000 == 0
-	for j in 1..9999
-		adder = 0
-		adder = amicable(i, j) if $qualified[i] == nil
-		sum += adder
-		puts ">>" + adder.to_s if adder != 0
-	end
-end
-puts sum
+puts (1...BOUND).to_a.select{|x| is_amicable?(x)}.inject{|x, y| x + y}
