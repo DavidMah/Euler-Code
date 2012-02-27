@@ -15,9 +15,9 @@ behind = 0
 ahead  = 1
 sum    = 0
 while ahead < UPPER_BOUND
-	temp = ahead
-	ahead = ahead + behind
+	temp   = ahead
+	ahead  = ahead + behind
   behind = temp
-	sum += ahead if ahead.even?
+	sum   += ahead if ahead.even?
 end
 puts sum
